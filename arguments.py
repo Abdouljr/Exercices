@@ -12,4 +12,6 @@ class Arguments:
                                  required=False)
         self.parser.add_argument("-m", "--md5", dest="md5", help="Mot de passe hacher (MD5)",
                                  required=False)
+        self.parser.add_argument("-l", "--plength", dest="plength", help="La taille du mot de passe",
+                                 required=False, type=int)
         return self.parser.parse_args()
