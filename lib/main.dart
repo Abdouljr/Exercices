@@ -4,7 +4,7 @@ import 'package:flutter_ecommerce/views/entrypoint.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-Widget defaultHome = MainScreen();
+Widget defaultHome = const MainScreen();
 
 void main() {
   runApp(const MyApp());

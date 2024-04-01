@@ -11,9 +11,9 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
-  List<Widget> pagesList = const [
+  final List<Widget> pagesList = const [
     HomePage(),
     SearchPage(),
     CartPage(),
