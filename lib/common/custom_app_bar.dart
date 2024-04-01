@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ReusableText(
-                            text: "Deliver to",
+                            text: "Neymar jr",
                             style: appStyle(13, kSecondary, FontWeight.w600),
                           ),
                           Text(
