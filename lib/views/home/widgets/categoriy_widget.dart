@@ -3,7 +3,7 @@ import 'package:flutter_ecommerce/common/app_style.dart';
 import 'package:flutter_ecommerce/common/reusable_text.dart';
 import 'package:flutter_ecommerce/constants/constant.dart';
 import 'package:flutter_ecommerce/controllers/category_controller.dart';
-import 'package:flutter_ecommerce/views/categorie/all_categories.dart';
+import 'package:flutter_ecommerce/views/categorie/all_categories_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
