@@ -3,10 +3,12 @@ import 'package:flutter_ecommerce/common/custom_app_bar.dart';
 import 'package:flutter_ecommerce/common/custom_container.dart';
 import 'package:flutter_ecommerce/common/heading.dart';
 import 'package:flutter_ecommerce/constants/constant.dart';
-import 'package:flutter_ecommerce/views/home/all_fastes_foods.dart';
+import 'package:flutter_ecommerce/views/home/all_fastest_foods_page.dart';
 import 'package:flutter_ecommerce/views/home/recommandation_page.dart';
-import 'package:flutter_ecommerce/views/home/all_nearby_restaurants.dart';
+import 'package:flutter_ecommerce/views/home/all_nearby_restaurants_page.dart';
 import 'package:flutter_ecommerce/views/home/widgets/category_list.dart';
+import 'package:flutter_ecommerce/views/home/widgets/foods_list.dart';
+import 'package:flutter_ecommerce/views/home/widgets/nearby_restaurants_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -32,6 +34,7 @@ class HomePage extends StatelessWidget {
                       duration: const Duration(milliseconds: 900));
                 },
               ),
+              const NearbyRestaurents(),
               Heading(
                 text: 'Try Something New',
                 onTap: () {
@@ -40,6 +43,7 @@ class HomePage extends StatelessWidget {
                       duration: const Duration(milliseconds: 900));
                 },
               ),
+              const FoodsList(),
               Heading(
                 text: 'Food closer to you',
                 onTap: () {
@@ -48,6 +52,7 @@ class HomePage extends StatelessWidget {
                       duration: const Duration(milliseconds: 900));
                 },
               ),
+              const FoodsList(),
             ],
           ),
         )));
