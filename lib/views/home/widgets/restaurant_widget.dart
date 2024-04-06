@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_ecommerce/common/app_style.dart';
+import 'package:flutter_ecommerce/common/reusable_text.dart';
 import 'package:flutter_ecommerce/constants/constant.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RestaurantWidget extends StatelessWidget {
@@ -27,7 +30,7 @@ class RestaurantWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(right: 12.w),
         child: Container(
-          width: width * 75,
+          width: width * .75,
           height: 192.h,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.r), color: kLigthtWhite),
@@ -66,7 +69,40 @@ class RestaurantWidget extends StatelessWidget {
                         ))
                   ],
                 ),
-              )
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ReusableText(
+                            text: title,
+                            style: appStyle(12, kDark, FontWeight.w500)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ReusableText(
+                                text: "Delivery time",
+                                style: appStyle(10, kGray, FontWeight.w500)),
+                            ReusableText(
+                                text: time,
+                                style: appStyle(10, kDark, FontWeight.w500)),
+                          ],
+                        ),
+                        Row(children: [
+                          RatingBarIndicator(
+                              itemBuilder: (context, index) =>
+                                  const Icon(Icons.star, color: kPrimary),
+                              itemCount: 5,
+                              itemSize: 15.h,
+                              rating: 4.0,
+                              direction: Axis.horizontal),
+                          SizedBox(width: 10.w),
+                          ReusableText(
+                              text: "$rating + reviews and ratings",
+                              style: appStyle(10, kGray, FontWeight.w500)),
+                        ])
+                      ]))
             ],
           ),
         ),

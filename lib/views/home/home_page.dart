@@ -8,7 +8,7 @@ import 'package:flutter_ecommerce/views/home/recommandation_page.dart';
 import 'package:flutter_ecommerce/views/home/all_nearby_restaurants_page.dart';
 import 'package:flutter_ecommerce/views/home/widgets/category_list.dart';
 import 'package:flutter_ecommerce/views/home/widgets/foods_list.dart';
-import 'package:flutter_ecommerce/views/home/widgets/nearby_restaurants_list.dart';
+import 'package:flutter_ecommerce/views/home/widgets/restaurants_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
               ),
               const FoodsList(),
               Heading(
-                text: 'Food closer to you',
+                text: 'Fastest Food closer to you',
                 onTap: () {
                   Get.to(() => const AllFastesFoods(),
                       transition: Transition.cupertino,

@@ -10,7 +10,7 @@ class NearbyRestaurents extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 12.w, top: 10.h),
-      height: 194.h,
+      height: 190.h,
       child: ListView(
           scrollDirection: Axis.horizontal,
           children: List.generate(restaurants.length, (i) {
