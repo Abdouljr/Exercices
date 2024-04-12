@@ -1,8 +1,8 @@
 const Router = require('express').Router();
 const CategorieService = require('../services/categorie_service');
 
-Router.post('/', CategorieService.add);
-Router.get('/', CategorieService.getAll);
-Router.get('/random', CategorieService.random);
+Router.post('/', CategorieService.addCategorie);
+Router.get('/all', CategorieService.getAllCategorie);
+Router.get('/random', CategorieService.getrandomCategorie);
 
 module.exports = Router

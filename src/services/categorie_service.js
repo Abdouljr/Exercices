@@ -1,7 +1,7 @@
 const Categorie = require('../models/categorie')
 
 module.exports = {
-    add: async (req, res)=>{
+    addCategorie: async (req, res)=>{
         const newCategorie = new Categorie(req.body);
 
         try {
@@ -14,7 +14,7 @@ module.exports = {
         }
     },
 
-    getAll: async (req, res)=>{
+    getAllCategorie: async (req, res)=>{
         try {
             const categories = await Categorie.find({title: {$ne: 'More'}}, {__v: 0});
             res.status(200).json(categories);
@@ -24,7 +24,17 @@ module.exports = {
         }
     },
 
-    random: async (req, res)=>{
+    getCategorieById: async (req, res)=>{
+        const id = req.params.id
+        try {
+            const categorie = await Categorie.findById(id);
+            res.status(200).json(categorie);
+        } catch (error) {
+            res.status(500).json({status: false, message: error.message});
+        }
+    },
+
+    getrandomCategorie: async (req, res)=>{
         try {
             const categories = await Categorie.aggregate([
                 {$match: {title: {$ne: 'More'}}},
