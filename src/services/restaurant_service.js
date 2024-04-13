@@ -32,14 +32,14 @@ module.exports = {
         try {
             let restaurants = [];
             if (code){
-                restaurants = Restaurant.aggregate([
+                restaurants = await Restaurant.aggregate([
                     {$match: {code: code, isAvailable: true}},
                     {$project: {__v: 0}}
                 ]);
             };
 
             if(restaurants.length === 0){
-                restaurants = Restaurant.aggregate([
+                restaurants = await Restaurant.aggregate([
                     {$match: {isAvailable: true}},
                     {$project: {__v: 0}}
                 ]);
@@ -57,7 +57,7 @@ module.exports = {
         try {
             let restaurants = [];
             if (code){
-                restaurants = Restaurant.aggregate([
+                restaurants = await Restaurant.aggregate([
                     {$match: {code: code, isAvailable: true}},
                     {$sample: {size: 5}},
                     {$project: {__v: 0}}
@@ -65,7 +65,7 @@ module.exports = {
             };
 
             if(restaurants.length === 0){
-                restaurants = Restaurant.aggregate([
+                restaurants = await Restaurant.aggregate([
                     {$match: {isAvailable: true}},
                     {$sample: {size: 5}},
                     {$project: {__v: 0}}
