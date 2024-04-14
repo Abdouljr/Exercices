@@ -4,7 +4,6 @@ const FoodModel = require('../models/food');
 module.exports = {
     addFood: async (req, res)=>{
         const {title, foodTags, category, code, time, restaurant, description, price, additives, imageUrl} = req.body;
-        //console.log('tile:', title, 'foodTags:', foodTags, 'category:', category, 'code:', code, 'time:', time, 'restaurant:', restaurant, 'description:', description, 'price:', price, 'additives:', additives, 'imageUrl:', imageUrl);
         if(!title || !foodTags || !category || !code || !time || !restaurant || !description || !price || !additives || !imageUrl){
             res.status(400).json({status: false, message: "Veuillez renseigner tous les champs obligatoires"});
         }
@@ -31,23 +30,29 @@ module.exports = {
     },
 
     getRandomFood: async (req, res)=>{
-        const code = req.params.code;
-        let foods;
         try {
-            foods = await FoodModel.aggregate([
-                {$match: {code: code, isAvailable: true}},
-                {$sample: {size: 5}},
-                {$project: {__v: 0}}
-            ]);
+            let randomFoodList = [];            
+            if(req.params.code){
 
-            if( foods.length === 0){
-                foods = await FoodModel.aggregate([
-                    {$match: {isAvailable: true}},
+                randomFoodList = await FoodModel.aggregate([
+                    {$match: {code: req.params.code, isAvailable: true}},
+                    {$sample: {size: 3}},
+                    {$project: {__v: 0}}
+                ]);
+            }
+
+            if( !randomFoodList.length){
+                randomFoodList = await FoodModel.aggregate([
                     {$sample: {size: 5}},
                     {$project: {__v: 0}}
                 ]);
             };
-            res.status(200).json(foods);
+
+            if( randomFoodList.length){
+                res.status(200).json(randomFoodList);
+            }else{
+                res.status(404).json({status: false, message: "Aucune nourriture disponible"});
+            };
         } catch (error) {
             res.status(500).json({status: false, message: error.message});
         }
@@ -55,7 +60,6 @@ module.exports = {
 
     getFoodsByRestaurant: async (req, res)=>{
         const id = req.params.id;
-
         try {
             const foods = await FoodModel.find({restaurant: id});
             res.status(200).json(foods);

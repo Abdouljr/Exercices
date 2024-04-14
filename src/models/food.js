@@ -14,7 +14,7 @@ const FoodModel = new mongoose.Schema({
     description: {type: String, required: true},
     price: {type: Number, required: true},
     additives: {type: Array, default: []},
-    imageUrl: {type: String, required: true},
+    imageUrl: {type: Array, required: true},
 });
 
 module.exports = mongoose.model('food', FoodModel);
