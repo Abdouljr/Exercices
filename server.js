@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const CategorieController = require('./src/controllers/categorie_controller');
 const RestaurantController = require('./src/controllers/restaurant_controller');
 const FoodController = require('./src/controllers/food_controller');
+const RatingController = require('./src/controllers/rating_controller');
 
 const app = express();
 dotenv.config();
@@ -16,4 +17,5 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/categories', CategorieController);
 app.use('/api/restaurants', RestaurantController);
 app.use('/api/foods', FoodController);
+app.use('/api/ratings', RatingController);
 app.listen(process.env.PORT || 3000, () => console.log(`Le Backend ir-yoobo est lancer sur le port: ${process.env.PORT}`))

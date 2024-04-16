@@ -15,7 +15,7 @@ module.exports = {
         try {
             await newRating.save();
             if(req.body.ratingType == "Restaurant"){
-                const restaurants = await Restaurant.aggregate([
+                const restaurants = await Rating.aggregate([
                     {$match: {ratingType: req.body.ratingType, product: req.body.product}},
                     {$group: {_id: '$product', averatedRating: {$avg: '$rating'}}}
                 ]);
@@ -25,7 +25,7 @@ module.exports = {
                 await Restaurant.findOneAndUpdate(req.body.product, {rating: averatedRating}, {new: true});
                 };
             }else if(req.body.ratingType == "Food"){
-                const foods = await Restaurant.aggregate([
+                const foods = await Rating.aggregate([
                     {$match: {ratingType: req.body.ratingType, product: req.body.product}},
                     {$group: {_id: '$product', averatedRating: {$avg: '$rating'}}}
                 ]);
@@ -37,6 +37,22 @@ module.exports = {
             };
             res.status(201).json({status: true, message: 'Notes mise à jour avec success'});
 
+        } catch (error) {
+            res.status(500).json({status: false, message: error.message});
+        }
+    },
+
+    checkUserRating: async (req, res) => {
+        const ratingType = req.query.ratingType;
+        const product = req.query.product;
+
+        try {
+            const existingRating = await Rating.findOne({userId: req.user.id, ratingType: ratingType, product: product});
+            if (existingRating) {
+                res.status(200).json({status: true, message: 'Vous avez noté ce restaurant'});
+            }else{
+                res.status(200).json({status: false, message: "vous n'avez pas noté ce restaurant"});
+            }
         } catch (error) {
             res.status(500).json({status: false, message: error.message});
         }
