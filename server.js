@@ -6,8 +6,10 @@ const RestaurantController = require('./src/controllers/restaurant_controller');
 const FoodController = require('./src/controllers/food_controller');
 const RatingController = require('./src/controllers/rating_controller');
 
+
 const app = express();
 dotenv.config();
+
 mongoose.connect(process.env.MONGO_URL)
 .then(()=> console.log("Ir-yoobo Database connecté avec success"))
 .catch((err) => console.log(err));
