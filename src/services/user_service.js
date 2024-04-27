@@ -5,10 +5,9 @@ const User = require('../models/user');
 module.exports = {
 
     getUser: async(req, res) => {
-
         try {
             const user = await User.findById(req.user.id);
-            const {password, __v, createdAt, ...userData} = user.doc;
+            const {password, __v, createdAt, ...userData} = user._doc;
 
             res.status(200).json(userData);
         } catch (error) {
@@ -34,7 +33,7 @@ module.exports = {
 
             const {password, __v, otp, createdAt, ...others} = user._doc;
 
-            return res.satatus(200).json({...others});
+            return res.status(200).json({...others});
         }else{
 
             res.status(400).json({status: false, message: "La verification de l'otp a échoué"});

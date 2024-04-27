@@ -62,7 +62,7 @@ module.exports = {
                 return res.status(400).json({status: false, message: "Utilisateur non trouvé"});
             }
             
-            const decryptedPassword = CryptoJS.decrypt(user.password, process.env.SECRET);
+            const decryptedPassword = CryptoJS.AES.decrypt(user.password, process.env.SECRET);
             const depassword = decryptedPassword.toString(CryptoJS.enc.Utf8);
             
             if(depassword !== req.body.password){
@@ -76,7 +76,7 @@ module.exports = {
                 email: user.email,
             }, process.env.JWT_SECRET, {expiresIn: "21d"});
 
-            const {password, otp, ...others} = user._doc;
+            const {password, otp, createdAt, updatedAt, __v, ...others} = user._doc;
 
              res.status(200).json({...others, userToken});
 

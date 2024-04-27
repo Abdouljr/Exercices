@@ -12,13 +12,13 @@ const UserController = require('./src/controllers/user_controller');
 const app = express();
 dotenv.config();
 
-// mongoose.connect(process.env.MONGO_URL)
-// .then(()=> console.log("Ir-yoobo Database connecté avec success"))
-// .catch((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URL)
+.then(()=> console.log("Ir-yoobo Database connecté avec success"))
+.catch((err) => console.log(err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/api/', AuthController);
+app.use('/', AuthController);
 app.use('/api/users', UserController);
 app.use('/api/categories', CategorieController);
 app.use('/api/restaurants', RestaurantController);
