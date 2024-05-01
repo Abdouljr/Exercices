@@ -17,4 +17,4 @@ const UserModel = new mongoose.Schema({
     profile: {type: String, default: 'https://b.fssta.com/uploads/application/soccer/headshots/713.png'}
 }, {timestamps: true});
 
-module.exports = mongoose.model('user', UserModel);
+module.exports = mongoose.model('User', UserModel);

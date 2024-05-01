@@ -54,7 +54,7 @@ module.exports = {
         const userId = req.user.id;
 
         try {
-            const cart = Cart.find({userId: userId}).populate({
+            const cart = await Cart.find({userId: userId}).populate({
                 path: 'productId',
                 select: 'imageUrl title restaurant rating ratingCount',
                 populate: {

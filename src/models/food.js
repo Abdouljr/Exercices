@@ -17,4 +17,4 @@ const FoodModel = new mongoose.Schema({
     imageUrl: {type: Array, required: true},
 });
 
-module.exports = mongoose.model('food', FoodModel);
+module.exports = mongoose.model('Food', FoodModel);

@@ -9,6 +9,7 @@ const AuthController = require('./src/controllers/auth_contoller');
 const UserController = require('./src/controllers/user_controller');
 const AddressController = require('./src/controllers/address_controller');
 const CartController = require('./src/controllers/cart_controller');
+const OrderController = require('./src/controllers/order_controller');
 
 const app = express();
 dotenv.config();
@@ -23,8 +24,9 @@ app.use('/', AuthController);
 app.use('/api/users', UserController);
 app.use('/api/categories', CategorieController);
 app.use('/api/restaurants', RestaurantController);
-app.use('/api/foods', FoodController);
+app.use('/api/foods', FoodController); 
 app.use('/api/ratings', RatingController);
 app.use('/api/address', AddressController);
 app.use('/api/cart', CartController);
+app.use('/api/orders', OrderController);
 app.listen(process.env.PORT || 3000, () => console.log(`Le Backend ir-yoobo est lancer sur le port: ${process.env.PORT}`))

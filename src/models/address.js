@@ -10,4 +10,4 @@ const AddressModel = new mongoose.Schema({
     longitude: {type: Number, required: false},
 });
 
-module.exports = mongoose.model('address', AddressModel);
+module.exports = mongoose.model('Address', AddressModel);
