@@ -1,17 +1,15 @@
 name: flutter_ecommerce
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-
 
   cupertino_icons: ^1.0.6
   google_maps_flutter: ^2.5.0
@@ -25,8 +23,8 @@ dependencies:
   google_fonts: ^6.1.0
   # cached_network_image: ^3.3.0
   flutter_rating_bar: ^4.0.1
-  # flutter_hooks: ^0.20.3
-  # http: ^1.1.0
+  flutter_hooks: ^0.20.3
+  http: ^1.1.0
   shimmer: ^3.0.0
   # glass: ^1.0.2+1
   # flutter_svg: ^2.0.9
@@ -40,17 +38,14 @@ dependencies:
   # firebase_auth: ^4.15.2
   # firebase_core: ^2.24.2
   # country_picker: ^2.0.23
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
   flutter_lints: ^3.0.0
 
-
 flutter:
-
   uses-material-design: true
 
   assets:

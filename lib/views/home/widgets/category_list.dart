@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/constants/uidata.dart';
+import 'package:flutter_ecommerce/hooks/fetch_categories.dart';
 import 'package:flutter_ecommerce/views/home/widgets/categoriy_widget.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CategoryList extends StatelessWidget {
+class CategoryList extends HookWidget {
   const CategoryList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final hookResult = useFetchCategories();
     return Container(
       padding: EdgeInsets.only(left: 12.w, top: 10.h),
       height: 75.h,
