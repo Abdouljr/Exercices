@@ -1,7 +1,7 @@
 import 'package:flutter_ecommerce/constants/constant.dart';
 import 'package:flutter_ecommerce/models/api_error.dart';
+import 'package:flutter_ecommerce/models/categories_model.dart';
 import 'package:flutter_ecommerce/models/hooks/hook_result.dart';
-import 'package:flutter_ecommerce/models/restaurant_model.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,17 +15,14 @@ FetchHook useFetchCategories() {
     isLoading.value = true;
 
     try {
-      Uri url = Uri.parse('$appBaseUrl/api/category/random');
+      Uri url = Uri.parse('$appBaseUrl/api/categories/random');
       final response = await http.get(url);
-      print(response.statusCode);
       if (response.statusCode == 200) {
         categoriesItems.value = categoriesModelFromJson(response.body);
       } else {
         apiError.value = apiErrorFromJson(response.body);
       }
     } catch (e) {
-      print("response aaaa: ");
-      print(e);
       error.value = e as Exception;
     } finally {
       isLoading.value = false;

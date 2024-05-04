@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-List<CategoriesModel> categoriesModelFromJson(String str) =>
-    List<CategoriesModel>.from(
-        json.decode(str).map((x) => CategoriesModel.fromJson(x)));
+List<RestaurantModel> restaurantModelFromJson(String str) =>
+    List<RestaurantModel>.from(
+        json.decode(str).map((x) => RestaurantModel.fromJson(x)));
 
-String categoriesModelToJson(List<CategoriesModel> data) =>
+String restaurantModelToJson(List<RestaurantModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class CategoriesModel {
+class RestaurantModel {
   final String id;
   final String title;
   final String time;
@@ -25,7 +25,7 @@ class CategoriesModel {
   final String verificationMessage;
   final Coords coords;
 
-  CategoriesModel({
+  RestaurantModel({
     required this.id,
     required this.title,
     required this.time,
@@ -44,8 +44,8 @@ class CategoriesModel {
     required this.coords,
   });
 
-  factory CategoriesModel.fromJson(Map<String, dynamic> json) =>
-      CategoriesModel(
+  factory RestaurantModel.fromJson(Map<String, dynamic> json) =>
+      RestaurantModel(
         id: json["_id"],
         title: json["title"],
         time: json["time"],

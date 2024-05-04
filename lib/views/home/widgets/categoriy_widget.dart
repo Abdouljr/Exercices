@@ -3,6 +3,7 @@ import 'package:flutter_ecommerce/common/app_style.dart';
 import 'package:flutter_ecommerce/common/reusable_text.dart';
 import 'package:flutter_ecommerce/constants/constant.dart';
 import 'package:flutter_ecommerce/controllers/category_controller.dart';
+import 'package:flutter_ecommerce/models/categories_model.dart';
 import 'package:flutter_ecommerce/views/categorie/all_categories_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,23 +14,23 @@ class CategoriyWidget extends StatelessWidget {
     required this.category,
   });
 
-  final dynamic category;
+  final CategoriesModel category;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CategoryController());
     return GestureDetector(
         onTap: () {
-          if (controller.category == category['_id']) {
+          if (controller.category == category.id) {
             controller.updateCategory = '';
             controller.updateTitle = '';
-          } else if (category['title'] == 'More') {
+          } else if (category.title == 'More') {
             Get.to(() => const AllCategories(),
                 transition: Transition.fadeIn,
                 duration: const Duration(milliseconds: 900));
           } else {
-            controller.updateCategory = category['_id'];
-            controller.updateTitle = category['title'];
+            controller.updateCategory = category.id;
+            controller.updateTitle = category.title;
           }
         },
         child: Obx(
@@ -40,7 +41,7 @@ class CategoriyWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
                 border: Border.all(
-                    color: controller.category == category['_id']
+                    color: controller.category == category.id
                         ? kSecondary
                         : kOffWhite,
                     width: 1.w)),
@@ -49,11 +50,11 @@ class CategoriyWidget extends StatelessWidget {
                 SizedBox(
                     height: 35.h,
                     child: Image.network(
-                      category['imageUrl'],
+                      category.imageUrl,
                       fit: BoxFit.contain,
                     )),
                 ReusableText(
-                    text: category['title'],
+                    text: category.title,
                     style: appStyle(11, kDark, FontWeight.normal))
               ],
             ),
