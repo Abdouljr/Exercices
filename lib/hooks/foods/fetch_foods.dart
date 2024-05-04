@@ -17,6 +17,7 @@ FetchHook useFetchFoods(String code) {
     try {
       Uri url = Uri.parse('$appBaseUrl/api/foods/recommendation/$code');
       final response = await http.get(url);
+      print(url);
       if (response.statusCode == 200) {
         foodsItems.value = foodModelFromJson(response.body);
       } else {

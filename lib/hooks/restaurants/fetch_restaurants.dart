@@ -6,7 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:http/http.dart' as http;
 
 FetchHook useFetchRestaurants(String code) {
-  final restaurantItems = useState<List<RestaurantModel>?>(null);
+  final restaurants = useState<List<RestaurantModel>?>(null);
   final isLoading = useState<bool>(false);
   final error = useState<Exception?>(null);
   final apiError = useState<ApiError?>(null);
@@ -18,7 +18,7 @@ FetchHook useFetchRestaurants(String code) {
       Uri url = Uri.parse('$appBaseUrl/api/restaurants/random/$code');
       final response = await http.get(url);
       if (response.statusCode == 200) {
-        restaurantItems.value = restaurantModelFromJson(response.body);
+        restaurants.value = restaurantModelFromJson(response.body);
       } else {
         apiError.value = apiErrorFromJson(response.body);
       }
@@ -40,7 +40,7 @@ FetchHook useFetchRestaurants(String code) {
   }
 
   return FetchHook(
-      data: restaurantItems.value,
+      data: restaurants.value,
       isloading: isLoading.value,
       error: error.value,
       refetch: refresh);

@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'dart:convert';
 
 List<FoodModel> foodModelFromJson(String str) =>

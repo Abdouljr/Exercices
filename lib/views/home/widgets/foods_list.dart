@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/constants/uidata.dart';
 import 'package:flutter_ecommerce/hooks/foods/fetch_foods.dart';
 import 'package:flutter_ecommerce/models/Food_model.dart';
 import 'package:flutter_ecommerce/shimmers/nearby_shimmer.dart';
@@ -12,9 +11,9 @@ class FoodsList extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hookResultat = useFetchFoods("41007428");
-    List<FoodModel>? foodsList = hookResultat.data;
-    final isLoading = hookResultat.isloading;
+    final hookResult = useFetchFoods("41007428");
+    List<FoodModel>? foodsList = hookResult.data;
+    final isLoading = hookResult.isloading;
     return isLoading
         ? const NearbyShimmer()
         : Container(

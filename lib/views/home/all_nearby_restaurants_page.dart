@@ -3,7 +3,6 @@ import 'package:flutter_ecommerce/common/app_style.dart';
 import 'package:flutter_ecommerce/common/back_ground_container.dart';
 import 'package:flutter_ecommerce/common/reusable_text.dart';
 import 'package:flutter_ecommerce/constants/constant.dart';
-import 'package:flutter_ecommerce/constants/uidata.dart';
 import 'package:flutter_ecommerce/hooks/restaurants/fetch_all_restaurants.dart';
 import 'package:flutter_ecommerce/models/restaurant_model.dart';
 import 'package:flutter_ecommerce/shimmers/foodlist_shimmer.dart';
