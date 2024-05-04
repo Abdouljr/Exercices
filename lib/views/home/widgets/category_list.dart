@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/hooks/fetch_categories.dart';
+import 'package:flutter_ecommerce/hooks/categories/fetch_categories.dart';
 import 'package:flutter_ecommerce/models/categories_model.dart';
 import 'package:flutter_ecommerce/shimmers/categories_shimmer.dart';
 import 'package:flutter_ecommerce/views/home/widgets/categoriy_widget.dart';
@@ -15,17 +15,17 @@ class CategoryList extends HookWidget {
     List<CategoriesModel>? categoriesList = hookResult.data;
     final isLoading = hookResult.isloading;
     //final error = hookResult.error;
-    return Container(
-      padding: EdgeInsets.only(left: 12.w, top: 10.h),
-      height: 85.h,
-      child: isLoading
-          ? const CatergoriesShimmer()
-          : ListView(
-              scrollDirection: Axis.horizontal,
-              children: List.generate(categoriesList!.length, (i) {
-                CategoriesModel category = categoriesList[i];
-                return CategoriyWidget(category: category);
-              })),
-    );
+    return isLoading
+        ? const CatergoriesShimmer()
+        : Container(
+            padding: EdgeInsets.only(left: 12.w, top: 10.h),
+            height: 85.h,
+            child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: List.generate(categoriesList!.length, (i) {
+                  CategoriesModel category = categoriesList[i];
+                  return CategoriyWidget(category: category);
+                })),
+          );
   }
 }

@@ -4,14 +4,22 @@ import 'package:flutter_ecommerce/common/back_ground_container.dart';
 import 'package:flutter_ecommerce/common/reusable_text.dart';
 import 'package:flutter_ecommerce/constants/constant.dart';
 import 'package:flutter_ecommerce/constants/uidata.dart';
+import 'package:flutter_ecommerce/hooks/foods/fetch_all_foods.dart';
+import 'package:flutter_ecommerce/hooks/foods/fetch_foods.dart';
+import 'package:flutter_ecommerce/models/Food_model.dart';
+import 'package:flutter_ecommerce/shimmers/foodlist_shimmer.dart';
 import 'package:flutter_ecommerce/views/home/widgets/food_title.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Recommandations extends StatelessWidget {
+class Recommandations extends HookWidget {
   const Recommandations({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final hookResultat = useFetchAllFoods("41007428");
+    List<FoodModel>? foodsList = hookResultat.data;
+    final isLoading = hookResultat.isloading;
     return Scaffold(
         appBar: AppBar(
           elevation: 0.3,
@@ -26,11 +34,13 @@ class Recommandations extends StatelessWidget {
           color: Colors.white,
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: ListView(
-                children: List.generate(foods.length, (i) {
-              var food = foods[i];
-              return FoodTitle(food: food);
-            })),
+            child: isLoading
+                ? const FoodsListShimmer()
+                : ListView(
+                    children: List.generate(foodsList!.length, (i) {
+                    FoodModel food = foodsList[i];
+                    return FoodTitle(food: food);
+                  })),
           ),
         ));
   }
