@@ -3,7 +3,10 @@ import 'package:flutter_ecommerce/constants/constant.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key, required this.containerContent});
+  const CustomContainer(
+      {super.key, required this.containerContent, this.color});
+
+  final Color? color;
 
   final Widget containerContent;
   @override
@@ -18,7 +21,7 @@ class CustomContainer extends StatelessWidget {
         ),
         child: Container(
           width: width,
-          color: kOffWhite,
+          color: color ?? kOffWhite,
           child: SingleChildScrollView(
             child: containerContent,
           ),
