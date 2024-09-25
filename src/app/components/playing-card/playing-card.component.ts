@@ -14,5 +14,8 @@ export class PlayingCardComponent {
   //  @Input() moster: Monster = new Monster();
 
   // signal input
- moster: InputSignal<Monster> = input(new Monster());
+ moster: InputSignal<Monster> = input(new Monster(), {alias: "my-moster", transform: (value: Monster) => {
+  value.hp = 1000;
+  return value;
+ }});   // .required pour le rendre obligatoire
 }
