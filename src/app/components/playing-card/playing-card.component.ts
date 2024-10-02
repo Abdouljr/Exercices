@@ -9,13 +9,9 @@ import { Monster } from '../../models/moster.model';
   styleUrl: './playing-card.component.css'
 })
 export class PlayingCardComponent {
-  // on peut passer l'attribut required true pour le rendre obligatoire @Input({required: true})
-  // {transform: (value: Monster) => {}} pour faire des transformation avant l'utilisation du variable;
-  //  @Input() moster: Monster = new Monster();
-
-  // signal input
- moster: InputSignal<Monster> = input(new Monster(), {alias: "my-moster", transform: (value: Monster) => {
+ // signal input
+ moster: InputSignal<Monster> = input(new Monster(), {alias: "pokemon", transform: (value: Monster) => {
   value.hp = 1000;
   return value;
- }});   // .required pour le rendre obligatoire
+ }}); 
 }
